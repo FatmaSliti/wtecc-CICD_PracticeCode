@@ -1,12 +1,18 @@
-name: CI workflow
-
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: python:3.9-slim
+    container:
+      image: python:3.9-slim
+
+    steps:
+      - name: Check Python version
+        run: python --version
+
+      - name: Say hello
+        run: echo "Container is working!"
